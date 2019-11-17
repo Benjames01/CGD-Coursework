@@ -23,11 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float mShotDelay = 0.5f;
     float mLastShot = 0f;
+  
 
-
-    
-
-    public static int mCollectedAmount = 0;
+    public static int collectedAmount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +37,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        mShotDelay = GameController.FireRate;
+        mSpeed = GameController.MoveSpeed;
+        
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
                                     moveVertical * mSpeed,
                                     0);
 
-        mCollectText.text = "Items Collected: " + mCollectedAmount;
+        mCollectText.text = "Items Collected: " + collectedAmount;
 
     }
 

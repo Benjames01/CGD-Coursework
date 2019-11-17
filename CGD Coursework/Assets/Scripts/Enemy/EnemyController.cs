@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -11,13 +10,20 @@ public class EnemyController : MonoBehaviour
     public EnemyState mState = EnemyState.Walk;
 
     [SerializeField]
-    float mRange = 3f;
+    float mRange = 10f;
     [SerializeField]
-    float mSpeed = 5f;
+    float mSpeed = 1f;
+    [SerializeField]
+    float mAttackRange = 2f;
+    [SerializeField]
+    float mAttackDelay = 1f;
+
+    [SerializeField]
+    int mDamage = 1;
 
     bool mChooseDirection = false;
-
     bool mDead = false;
+    bool mAttackCooldown;
 
     Vector3 mRandomDirection;
     void Start()
@@ -38,6 +44,9 @@ public class EnemyController : MonoBehaviour
             case (EnemyState.Die):
                 Die();
                 break;
+            case (EnemyState.Attack):
+                Attack();
+                break;
         }
 
         if (IsPlayerInRange(mRange) && mState != EnemyState.Die)
@@ -47,6 +56,11 @@ public class EnemyController : MonoBehaviour
         else if (!IsPlayerInRange(mRange) && mState != EnemyState.Die)
         {
             mState = EnemyState.Walk;
+        }
+
+        if (IsPlayerInRange(mAttackRange))
+        {
+            mState = EnemyState.Attack;
         }
 
     }
@@ -98,12 +112,28 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void Attack()
+    {
+        if (!mAttackCooldown)
+        {
+            GameController.DamagePlayer(mDamage);
+            StartCoroutine(AttackCooldown());
+        }
+        
+    }
 
+    private IEnumerator AttackCooldown()
+    {
+        mAttackCooldown = true;
+        yield return new WaitForSeconds(mAttackDelay);
+        mAttackCooldown = false;
+    }
 }
 
 public enum EnemyState
 {
     Walk,
     Follow,
-    Die
+    Die,
+    Attack
 };

@@ -97,6 +97,9 @@ MonoBehaviour:
   mState: 0
   mRange: 10
   mSpeed: 3
+  mAttackRange: 1
+  mAttackDelay: 2
+  mDamage: 1
 --- !u!61 &5597813705221100500
 BoxCollider2D:
   m_ObjectHideFlags: 0

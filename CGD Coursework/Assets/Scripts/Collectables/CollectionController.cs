@@ -2,13 +2,29 @@
 
 public class CollectionController : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    Item item;
+
+    float mHealthBoost;
+    float mMoveSpeedBoost;
+    float mAttackSpeedBoost;
+    float mBulletSizeBoost;
+
+
+    void Start()
+    {
+        //GetComponent<SpriteRenderer>().sprite = item.ItemImage;
+        //Destroy(GetComponent<PolygonCollider2D>());
+       //gameObject.AddComponent<PolygonCollider2D>();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision: " + collision.tag);
 
         if(collision.tag == "Player")
         {
-            PlayerController.mCollectedAmount++;
+            PlayerController.collectedAmount++;
             Destroy(gameObject);
         }
 

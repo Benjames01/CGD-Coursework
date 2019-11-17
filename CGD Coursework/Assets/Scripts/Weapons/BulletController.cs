@@ -11,7 +11,8 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         StartCoroutine(DestroyDelay());
-    }
+        transform.localScale = new Vector2(GameController.BulletSize, GameController.BulletSize);
+    } 
 
 
     IEnumerator DestroyDelay()
