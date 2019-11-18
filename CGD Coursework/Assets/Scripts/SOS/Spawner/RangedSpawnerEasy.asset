@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1508c75af44f91b45aea3cadb250f509, type: 3}
-  m_Name: MeleeSpawnerEasy
+  m_Name: RangedSpawnerEasy
   m_EditorClassIdentifier: 
-  mObjToSpawn: {fileID: 1057627609286575260, guid: fa4e601594ea0264899791b69cede654,
+  mObjToSpawn: {fileID: 1057627609286575260, guid: 807e1b641dbe4b445af591cdc23dccd8,
     type: 3}
   mMinimumSpawn: 1
   mMaximumSpawn: 3
