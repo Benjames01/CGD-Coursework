@@ -54,6 +54,11 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         } 
 
+        if(collision.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+
         if(collision.tag == "Player" && IsEnemyBullet)
         {
             GameController.DamagePlayer(1);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    
+
     [SerializeField]
     List<Spawnable> mItems = new List<Spawnable>();
 
@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
     void Awake()
     {
         mTotalWeight = 0f;
-        foreach(var spawnable in mItems)
+        foreach (var spawnable in mItems)
         {
             mTotalWeight += spawnable.mWeight;
         }
@@ -26,14 +26,14 @@ public class ItemSpawner : MonoBehaviour
 
         int index = 0;
 
-        while(rand > cumulativeWeight && rand < mItems.Count - 1)
+        while (rand > cumulativeWeight && rand < mItems.Count - 1)
         {
             index++;
             cumulativeWeight += mItems[index].mWeight;
         }
 
-        GameObject item = Instantiate(mItems[index].mGameObject, transform.position, Quaternion.identity) as GameObject;
 
+        GameObject item = Instantiate(mItems[index].mGameObject, transform.position, Quaternion.identity, transform) as GameObject;
     }
 
 

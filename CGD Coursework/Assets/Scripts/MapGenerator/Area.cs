@@ -38,7 +38,7 @@ public class Area : MonoBehaviour
 
     void Update()
     {
-        if(name.Contains("Finish") && !mUpdatedExits)
+        if (name.Contains("Finish") && !mUpdatedExits)
         {
             RemoveDisconnectedExits();
             mUpdatedExits = true;
@@ -47,7 +47,7 @@ public class Area : MonoBehaviour
 
     void Start()
     {
-        if(AreaController.instance == null)
+        if (AreaController.instance == null)
         {
             Debug.Log("ERROR: Started game in wrong scene, scene must contain AreaController");
             return;
@@ -55,7 +55,7 @@ public class Area : MonoBehaviour
 
         Exit[] exts = GetComponentsInChildren<Exit>();
 
-        if(exts.Length != 0)
+        if (exts.Length != 0)
         {
             foreach (Exit e in exts)
             {
@@ -89,7 +89,7 @@ public class Area : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             AreaController.instance.OnPlayerEnterArea(this);
         }
@@ -104,27 +104,36 @@ public class Area : MonoBehaviour
         return null;
     }
 
+    private void DisableExitAndEnableCollider(Exit exit)
+    {
+        if (exit == null)
+            return;
+
+        exit.GetComponent<SpriteRenderer>().enabled = false;
+        exit.GetComponent<BoxCollider2D>().isTrigger = false;
+    }
+
     public void RemoveDisconnectedExits()
     {
-        foreach(Exit e in mExits)
+        foreach (Exit e in mExits)
         {
             switch (e.Exittype)
             {
                 case ExitType.down:
                     if (GetArea(mX, mY - 1) == null)
-                        e.gameObject.SetActive(false);        
+                        DisableExitAndEnableCollider(e);
                     break;
                 case ExitType.up:
                     if (GetArea(mX, mY + 1) == null)
-                        e.gameObject.SetActive(false);
+                        DisableExitAndEnableCollider(e);
                     break;
                 case ExitType.left:
-                    if (GetArea(mX-1, mY) == null)
-                        e.gameObject.SetActive(false);
+                    if (GetArea(mX - 1, mY) == null)
+                        DisableExitAndEnableCollider(e);
                     break;
                 case ExitType.right:
-                    if (GetArea(mX+1, mY) == null)
-                        e.gameObject.SetActive(false);
+                    if (GetArea(mX + 1, mY) == null)
+                        DisableExitAndEnableCollider(e);
                     break;
             }
         }

@@ -20,9 +20,9 @@ public class MapGenerator : MonoBehaviour
     {
         AreaController.instance.LoadArea("Start", 0, 0);
 
-        foreach(Vector2Int areaLocation in areas)
-        { 
-                AreaController.instance.LoadArea("Empty", areaLocation.x, areaLocation.y);         
+        foreach (Vector2Int areaLocation in areas)
+        {
+            AreaController.instance.LoadArea(AreaController.instance.GetRandomAreaName(), areaLocation.x, areaLocation.y);
         }
     }
 }

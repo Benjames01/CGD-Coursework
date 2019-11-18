@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Areas/GroundFinish.unity
     guid: 56b5e004cd149f042b64232ebef64c85
+  - enabled: 1
+    path: Assets/Scenes/Areas/GroundMeleeEasy.unity
+    guid: 52e4a50ed26f42e4eb68353175efb345
   m_configObjects: {}

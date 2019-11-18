@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if(mhealthText != null)
+        if (mhealthText != null)
             mhealthText.text = "Health: " + health;
     }
 

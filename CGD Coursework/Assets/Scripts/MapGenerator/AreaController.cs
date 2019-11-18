@@ -49,9 +49,10 @@ public class AreaController : MonoBehaviour
             if (!mSpawnedFinishArea)
             {
                 StartCoroutine(SpawnFinishArea());
-            } else if (mSpawnedFinishArea && !mUpdatedAreas)
+            }
+            else if (mSpawnedFinishArea && !mUpdatedAreas)
             {
-                foreach(Area area in mLoadedAreas)
+                foreach (Area area in mLoadedAreas)
                 {
                     area.RemoveDisconnectedExits();
                 }
@@ -74,7 +75,7 @@ public class AreaController : MonoBehaviour
 
         while (!loadArea.isDone)
             yield return null;
-        
+
     }
 
     IEnumerator SpawnFinishArea()
@@ -115,7 +116,7 @@ public class AreaController : MonoBehaviour
     public void RegisterArea(Area area)
     {
 
-        if(DoesAreaExist(mCurrentLoadAreaData.X, mCurrentLoadAreaData.Y))
+        if (DoesAreaExist(mCurrentLoadAreaData.X, mCurrentLoadAreaData.Y))
         {
             Destroy(area.gameObject);
             mIsLoadingArea = false;
@@ -140,7 +141,7 @@ public class AreaController : MonoBehaviour
         if (mLoadedAreas.Count == 0)
             CameraController.instance.CurrentArea = area;
 
-        mLoadedAreas.Add(area);       
+        mLoadedAreas.Add(area);
     }
 
     public bool DoesAreaExist(int x, int y)
@@ -152,5 +153,16 @@ public class AreaController : MonoBehaviour
     {
         CameraController.instance.CurrentArea = area;
         mCurrentArea = area;
+    }
+
+    public string GetRandomAreaName()
+    {
+        string[] areaNames = new string[]
+        {
+            "Empty",
+            "MeleeEasy"
+        };
+
+        return areaNames[UnityEngine.Random.Range(0, areaNames.Length)];
     }
 }
