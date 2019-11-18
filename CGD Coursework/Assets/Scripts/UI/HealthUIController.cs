@@ -12,6 +12,11 @@ public class HealthUIController : MonoBehaviour
     {
         mFill = (float) GameController.Health / GameController.MaxHealth;
 
-        mHealthPanel.GetComponent<Image>().fillAmount = mFill;
+
+        if(mHealthPanel != null)
+        {
+            mHealthPanel.GetComponent<Image>().fillAmount = mFill;
+        }
+        
     }
 }

@@ -7,7 +7,9 @@ public class EnemyController : MonoBehaviour
 
     GameObject mPlayer;
 
-    public EnemyState mState = EnemyState.Walk;
+    EnemyState mState = EnemyState.Walk;
+    [SerializeField]
+    EnemyClass mClass;
 
     [SerializeField]
     float mRange = 10f;
@@ -17,6 +19,8 @@ public class EnemyController : MonoBehaviour
     float mAttackRange = 2f;
     [SerializeField]
     float mAttackDelay = 1f;
+    [SerializeField]
+    float mProjectileSpeed = .2f;
 
     [SerializeField]
     int mDamage = 1;
@@ -24,6 +28,9 @@ public class EnemyController : MonoBehaviour
     bool mChooseDirection = false;
     bool mDead = false;
     bool mAttackCooldown;
+
+    [SerializeField]
+    GameObject mProjectilePrefab;
 
     Vector3 mRandomDirection;
     void Start()
@@ -116,8 +123,29 @@ public class EnemyController : MonoBehaviour
     {
         if (!mAttackCooldown)
         {
-            GameController.DamagePlayer(mDamage);
-            StartCoroutine(AttackCooldown());
+
+            switch(mClass){
+
+                case (EnemyClass.Melee):
+                    GameController.DamagePlayer(mDamage);
+                    StartCoroutine(AttackCooldown());
+                    break;
+
+                case (EnemyClass.Ranged):
+                    GameObject projectile = Instantiate(mProjectilePrefab,
+                                                        transform.position,
+                                                        Quaternion.identity) as GameObject;
+
+                    projectile.GetComponent<BulletController>().GetPlayer(mPlayer.transform);
+                    projectile.AddComponent<Rigidbody2D>().gravityScale = 0;
+                    projectile.GetComponent<BulletController>().IsEnemyBullet = true;
+                    projectile.GetComponent<BulletController>().Speed = mProjectileSpeed;
+
+                    StartCoroutine(AttackCooldown());
+                    break;
+            }
+
+
         }
         
     }
@@ -136,4 +164,10 @@ public enum EnemyState
     Follow,
     Die,
     Attack
+};
+
+public enum EnemyClass
+{
+    Melee,
+    Ranged
 };
