@@ -160,7 +160,8 @@ public class AreaController : MonoBehaviour
         string[] areaNames = new string[]
         {
             "Empty",
-            "MeleeEasy"
+            "MeleeEasy",
+            "RangedEasy"
         };
 
         return areaNames[UnityEngine.Random.Range(0, areaNames.Length)];

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Areas/GroundMeleeEasy.unity
     guid: 52e4a50ed26f42e4eb68353175efb345
+  - enabled: 1
+    path: Assets/Scenes/Areas/GroundRangedEasy.unity
+    guid: 8ba88e9c4a15d0e47ba73be254dc7513
   m_configObjects: {}
