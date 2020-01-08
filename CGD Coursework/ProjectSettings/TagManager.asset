@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Wall
+  - Fighter
+  - Minion
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Blocking
+  - Actor
   - 
   - 
   - 
@@ -40,12 +40,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: BG
-    uniqueID: 1711121099
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Door
-    uniqueID: 1429293313
+  - name: Floor
+    uniqueID: 1228852275
+    locked: 0
+  - name: Wall
+    uniqueID: 2879971261
+    locked: 0
+  - name: Actor
+    uniqueID: 266224019
+    locked: 0
+  - name: Weapon
+    uniqueID: 1860847095
+    locked: 0
+  - name: Interactable
+    uniqueID: 3933372397
+    locked: 0
+  - name: Walkbehind
+    uniqueID: 3394948737
     locked: 0
