@@ -6,6 +6,8 @@ Tileset by: 0x72 (https://0x72.itch.io)
 
 Music by: MusicNoteWorld (http://en.music-note.jp/)
 
+Other Art by: Ben James
+
 ## Explanation: 
 
 To play the game you need to enter the "Dungeon Portal". This will transport you to a randomly selected dungeon. While in the lair, it is up to you to decide if you will fight mobs, with melee or magic; explore for loot, or seek out the big boss.
@@ -15,7 +17,6 @@ Progressing through fighting will allow you to gain experience points and coins.
 
 
 ## Game Controls:
-
 
 
 ### Movement: 
